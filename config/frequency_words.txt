@@ -9,9 +9,6 @@ DeepSeek
 HarmonyOS
 任正非
 
-比亚迪
-王传福
-
 宇树
 王兴兴
 
@@ -29,15 +26,6 @@ bytedance
 
 特斯拉
 马斯克
-
-微软
-Microsoft
-
-英伟达
-NVIDIA
-黄仁勋
-
-AMD
 
 谷歌
 google
@@ -57,23 +45,22 @@ mac
 ios
 
 ai
+gpt
 !gai
 人工智能
 
-自动驾驶
-机器人
-
-国内新闻
 今日热点
+新闻
 中国
-各平台热榜
+热搜
+热榜
 
-国际新闻
+国际
 美国
 日本
 韩国
 
-科技新闻
+科技
 半导体
 智能汽车
 量子计算
@@ -86,6 +73,7 @@ ai
 飞船
 航空
 
-GitHub热门
-java后端
+GitHub
+后端
 编程
+java
