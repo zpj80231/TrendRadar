@@ -17,16 +17,29 @@ jobs:
         steps:
             - name: Checkout target repo
               uses: actions/checkout@v3
-
-            - name: Sync Upstream
-              uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
               with:
-                  target_repo_token: ${{ secrets.GITHUB_TOKEN }}
-                  upstream_sync_repo: sansan0/TrendRadar
-                  upstream_sync_branch: master
-                  target_sync_branch: master
-                  test_mode: false
+                fetch-depth: 0
 
+            # 获取上游更改但是不自动合并
+            - name: Fetch upstream changes
+              run: |
+                git remote add upstream https://github.com/sansan0/TrendRadar.git
+                git fetch upstream master
+                
+            # 尝试合并，但在冲突时保留我们的版本
+            - name: Merge with conflict resolution
+              run: |
+                git config user.name "GitHub Actions"
+                git config user.email "actions@github.com"
+                git merge -X ours upstream/master || echo "Merge conflict encountered, using our version"
+                git add .
+                git commit -m "Merge upstream changes (conflicts resolved by keeping our version)" || echo "No changes to commit"
+                
+            # 推送更改
+            - name: Push changes
+              run: |
+                git push origin master
+                
             - name: Check for Failure
               if: failure()
               run: |
